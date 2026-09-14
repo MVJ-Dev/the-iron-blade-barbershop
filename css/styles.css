@@ -1,0 +1,531 @@
+/* =========================================================================
+   THE IRON BLADE BARBERSHOP - Hoja de estilos externa personalizada
+   Asignatura: DSY1104 - Desarrollo Fullstack II
+   Autores: Nelson Carrasco - Mathias Von Jentschyk
+   Descripcion: CSS personalizado (variables, tipografias, componentes propios)
+                aplicado de forma consistente y externa a todas las paginas.
+   ========================================================================= */
+
+/* ---------- 1. Variables de diseno (paleta barberia dark + dorado) ------- */
+:root {
+  --color-negro:        #0d0d0d;
+  --color-carbon:       #1a1a1a;
+  --color-carbon-claro: #262626;
+  --color-dorado:       #c9a24b;
+  --color-dorado-claro: #e0c078;
+  --color-cobre:        #b87333;
+  --color-crema:        #f5f0e6;
+  --color-gris:         #9a9a9a;
+  --color-exito:        #4caf50;
+  --color-error:        #e05252;
+
+  --fuente-titulo: 'Oswald', 'Arial Narrow', sans-serif;
+  --fuente-texto:  'Roboto', 'Segoe UI', sans-serif;
+
+  --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --sombra-dorada: 0 0 0 2px var(--color-dorado);
+  --transicion: all 0.25s ease-in-out;
+}
+
+/* ---------- 2. Reset y base ---------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  background-color: var(--color-negro);
+  color: var(--color-crema);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-titulo);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-crema);
+}
+
+a {
+  color: var(--color-dorado);
+  text-decoration: none;
+  transition: var(--transicion);
+}
+
+a:hover {
+  color: var(--color-dorado-claro);
+}
+
+/* Separador decorativo con tijera */
+.divisor-dorado {
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-cobre), var(--color-dorado));
+  border: none;
+  margin: 1rem auto 2rem auto;
+  opacity: 1;
+}
+
+.texto-dorado { color: var(--color-dorado) !important; }
+
+/* ---------- 3. Navbar personalizada -------------------------------------- */
+.navbar-iron {
+  background-color: var(--color-negro) !important;
+  border-bottom: 2px solid var(--color-dorado);
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.navbar-iron .navbar-brand {
+  font-family: var(--fuente-titulo);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-crema);
+}
+
+.navbar-iron .navbar-brand span {
+  color: var(--color-dorado);
+}
+
+.navbar-iron .nav-link {
+  font-family: var(--fuente-titulo);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-crema) !important;
+  margin: 0 0.4rem;
+  position: relative;
+}
+
+.navbar-iron .nav-link:hover,
+.navbar-iron .nav-link.active {
+  color: var(--color-dorado) !important;
+}
+
+.navbar-iron .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--color-dorado);
+}
+
+/* ---------- 4. Botones personalizados ------------------------------------ */
+.btn-iron {
+  background: linear-gradient(135deg, var(--color-dorado), var(--color-cobre));
+  color: var(--color-negro);
+  font-family: var(--fuente-titulo);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border: none;
+  border-radius: 2px;
+  padding: 0.6rem 1.6rem;
+  transition: var(--transicion);
+}
+
+.btn-iron:hover {
+  background: linear-gradient(135deg, var(--color-dorado-claro), var(--color-dorado));
+  color: var(--color-negro);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-suave);
+}
+
+.btn-iron-outline {
+  background: transparent;
+  color: var(--color-dorado);
+  border: 2px solid var(--color-dorado);
+  font-family: var(--fuente-titulo);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  padding: 0.5rem 1.4rem;
+  transition: var(--transicion);
+}
+
+.btn-iron-outline:hover {
+  background: var(--color-dorado);
+  color: var(--color-negro);
+}
+
+/* ---------- 5. Hero ------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(rgba(13,13,13,0.78), rgba(13,13,13,0.88)),
+    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat;
+}
+
+.hero-contenido {
+  max-width: 780px;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.hero h1 span {
+  color: var(--color-dorado);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--color-gris);
+  margin-bottom: 2rem;
+}
+
+.hero-sub {
+  font-family: var(--fuente-titulo);
+  letter-spacing: 4px;
+  color: var(--color-dorado);
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+/* ---------- 6. Secciones -------------------------------------------------- */
+.seccion {
+  padding: 5rem 0;
+}
+
+.seccion-oscura   { background-color: var(--color-carbon); }
+.seccion-negra    { background-color: var(--color-negro); }
+
+.titulo-seccion {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.subtitulo-seccion {
+  text-align: center;
+  color: var(--color-gris);
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- 7. Cards personalizadas -------------------------------------- */
+.card-iron {
+  background-color: var(--color-carbon-claro);
+  border: 1px solid #333;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+  transition: var(--transicion);
+}
+
+.card-iron:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-dorado);
+  box-shadow: var(--sombra-suave);
+}
+
+.card-iron img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-iron .card-body {
+  padding: 1.3rem;
+}
+
+.card-iron .card-title {
+  font-family: var(--fuente-titulo);
+  color: var(--color-crema);
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.card-iron .card-text {
+  color: var(--color-gris);
+  font-size: 0.95rem;
+}
+
+.precio {
+  font-family: var(--fuente-titulo);
+  font-size: 1.5rem;
+  color: var(--color-dorado);
+  font-weight: 600;
+}
+
+.badge-categoria {
+  background-color: var(--color-cobre);
+  color: var(--color-negro);
+  font-family: var(--fuente-titulo);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* ---------- 8. Servicios (iconos) ---------------------------------------- */
+.servicio-item {
+  text-align: center;
+  padding: 2rem 1rem;
+  border: 1px solid #2b2b2b;
+  border-radius: 4px;
+  background-color: var(--color-carbon-claro);
+  height: 100%;
+  transition: var(--transicion);
+}
+
+.servicio-item:hover {
+  border-color: var(--color-dorado);
+  transform: translateY(-4px);
+}
+
+.servicio-item .icono {
+  font-size: 2.6rem;
+  color: var(--color-dorado);
+  margin-bottom: 1rem;
+}
+
+/* ---------- 9. Video ------------------------------------------------------ */
+.video-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 3px solid var(--color-dorado);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+}
+
+.video-wrapper video,
+.video-wrapper iframe {
+  width: 100%;
+  display: block;
+}
+
+/* ---------- 10. Formularios ---------------------------------------------- */
+.form-iron {
+  background-color: var(--color-carbon-claro);
+  border: 1px solid #333;
+  border-top: 3px solid var(--color-dorado);
+  border-radius: 4px;
+  padding: 2.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  box-shadow: var(--sombra-suave);
+}
+
+.form-iron.ancho {
+  max-width: 640px;
+}
+
+.form-iron label {
+  font-family: var(--fuente-titulo);
+  letter-spacing: 1px;
+  color: var(--color-crema);
+  margin-bottom: 0.3rem;
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.form-iron .form-control,
+.form-iron .form-select {
+  background-color: var(--color-negro);
+  border: 1px solid #444;
+  color: var(--color-crema);
+  border-radius: 2px;
+  padding: 0.6rem 0.8rem;
+}
+
+.form-iron .form-control:focus,
+.form-iron .form-select:focus {
+  background-color: var(--color-negro);
+  border-color: var(--color-dorado);
+  box-shadow: 0 0 0 0.2rem rgba(201, 162, 75, 0.25);
+  color: var(--color-crema);
+}
+
+.form-iron .form-control::placeholder {
+  color: #666;
+}
+
+/* Mensajes de validacion personalizados (JS) */
+.mensaje-error {
+  color: var(--color-error);
+  font-size: 0.83rem;
+  margin-top: 0.25rem;
+  min-height: 1rem;
+  display: block;
+}
+
+.mensaje-exito {
+  color: var(--color-exito);
+  font-size: 0.9rem;
+}
+
+.input-invalido {
+  border-color: var(--color-error) !important;
+}
+
+.input-valido {
+  border-color: var(--color-exito) !important;
+}
+
+/* Alertas propias */
+.alerta-iron {
+  border-radius: 2px;
+  border: none;
+  font-family: var(--fuente-texto);
+}
+
+/* ---------- 11. Tablas (mantenedor admin) -------------------------------- */
+.tabla-iron {
+  color: var(--color-crema);
+  background-color: var(--color-carbon-claro);
+}
+
+.tabla-iron thead {
+  background-color: var(--color-negro);
+  color: var(--color-dorado);
+  font-family: var(--fuente-titulo);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tabla-iron td, .tabla-iron th {
+  vertical-align: middle;
+  border-color: #333;
+}
+
+/* ---------- 12. Carrito --------------------------------------------------- */
+.item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-carbon-claro);
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.item-carrito img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.resumen-carrito {
+  background-color: var(--color-carbon-claro);
+  border: 1px solid #333;
+  border-top: 3px solid var(--color-dorado);
+  border-radius: 4px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 90px;
+}
+
+.contador-carrito {
+  background-color: var(--color-dorado);
+  color: var(--color-negro);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 0.15rem 0.45rem;
+  position: relative;
+  top: -8px;
+  left: -4px;
+}
+
+/* ---------- 13. Badge de rol / sesion ------------------------------------ */
+.badge-rol {
+  font-family: var(--fuente-titulo);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  background-color: var(--color-dorado);
+  color: var(--color-negro);
+}
+
+/* ---------- 14. Footer ---------------------------------------------------- */
+.footer-iron {
+  background-color: var(--color-negro);
+  border-top: 2px solid var(--color-dorado);
+  padding: 3rem 0 1.5rem 0;
+  color: var(--color-gris);
+}
+
+.footer-iron h5 {
+  color: var(--color-dorado);
+  margin-bottom: 1rem;
+}
+
+.footer-iron a {
+  color: var(--color-gris);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.footer-iron a:hover {
+  color: var(--color-dorado);
+}
+
+.footer-iron .redes a {
+  display: inline-block;
+  font-size: 1.3rem;
+  margin-right: 0.9rem;
+  color: var(--color-crema);
+}
+
+.footer-iron .redes a:hover {
+  color: var(--color-dorado);
+}
+
+.footer-copyright {
+  text-align: center;
+  border-top: 1px solid #2b2b2b;
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ---------- 15. Carrusel -------------------------------------------------- */
+.carousel-item img {
+  height: 480px;
+  object-fit: cover;
+  filter: brightness(0.55);
+}
+
+.carousel-caption h3 {
+  font-size: 2.4rem;
+  color: var(--color-crema);
+  text-shadow: 2px 2px 6px #000;
+}
+
+.carousel-caption p {
+  color: var(--color-dorado-claro);
+  font-family: var(--fuente-titulo);
+  letter-spacing: 2px;
+}
+
+/* ---------- 16. Utilidades y responsive ---------------------------------- */
+.mt-seccion { margin-top: 4rem; }
+
+@media (max-width: 768px) {
+  .seccion { padding: 3rem 0; }
+  .hero { min-height: 75vh; }
+  .carousel-item img { height: 320px; }
+  .form-iron { padding: 1.6rem; }
+  .resumen-carrito { position: static; }
+}
