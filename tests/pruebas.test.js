@@ -1,11 +1,3 @@
-/* =========================================================================
-   pruebas.test.js - Pruebas de la logica de The Iron Blade Barbershop
-   Se ejecutan con Node (node --test), sin dependencias externas.
-   Cargan los modulos reales de js/ dentro de un contexto que simula el
-   navegador (localStorage, sessionStorage y un document minimo).
-   Uso:  node --test  (desde la carpeta tests/)
-   ========================================================================= */
-
 const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('node:fs');
@@ -79,9 +71,7 @@ function cargar(contexto, ...archivos) {
   }
 }
 
-/* =========================================================================
-   1. DATA.JS - Inicializacion y helpers
-   ========================================================================= */
+/* DATA.JS - Inicializacion y helpers */
 test('data.js: la inicializacion carga usuarios, productos y carrito', () => {
   const ctx = crearContexto();
   cargar(ctx, 'data.js');
@@ -122,9 +112,7 @@ test('data.js: guardar y obtener productos persiste en localStorage', () => {
   assert.strictEqual(guardados[0].precio, 100);
 });
 
-/* =========================================================================
-   2. AUTH.JS - Login, registro, roles y sesion
-   ========================================================================= */
+/* AUTH.JS - Login, registro, roles y sesion */
 test('auth.js: login correcto con admin del seed', () => {
   const ctx = crearContexto();
   cargar(ctx, 'data.js', 'auth.js');
@@ -181,9 +169,7 @@ test('auth.js: un usuario normal no es admin', () => {
   assert.strictEqual(ctx.esAdmin(), false);
 });
 
-/* =========================================================================
-   3. VALIDACIONES.JS - Validaciones de formularios
-   ========================================================================= */
+/* VALIDACIONES.JS - Validaciones de formularios */
 test('validaciones.js: email valido e invalido', () => {
   const ctx = crearContexto({ correo: 'juan@correo.cl' });
   cargar(ctx, 'validaciones.js');
@@ -262,9 +248,7 @@ test('validaciones.js: select obliga a elegir una opcion', () => {
   assert.strictEqual(ctxOk.validarSelect('cat', 'una categoria'), true);
 });
 
-/* =========================================================================
-   4. SMOKE TEST - Las paginas HTML se levantan y estan bien formadas
-   ========================================================================= */
+/* SMOKE TEST - Las paginas HTML se levantan y estan bien formadas */
 test('paginas HTML: todas existen y tienen scripts + IDs esperados', () => {
   const raiz = path.join(__dirname, '..');
   const paginas = [

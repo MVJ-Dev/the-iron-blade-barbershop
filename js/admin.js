@@ -1,17 +1,7 @@
-/* =========================================================================
-   admin.js - Mantenedor (CRUD) de productos y usuarios
-   The Iron Blade Barbershop | DSY1104
-   Solo accesible para el rol admin. Persiste en LocalStorage.
-   ========================================================================= */
-
-// Proteger: solo el administrador entra aqui
 protegerPagina('admin');
 
 let modalProducto, modalUsuario;
 
-/* ========================================================================
-   PRODUCTOS
-   ======================================================================== */
 function renderizarTablaProductos() {
   const tbody = document.getElementById('tabla-productos');
   const productos = obtenerProductos();
@@ -62,8 +52,7 @@ function editarProducto(id) {
 
 function eliminarProducto(id) {
   if (!confirm('Seguro que deseas eliminar este producto?')) return;
-  let productos = obtenerProductos();
-  productos = productos.filter(function (p) { return p.id !== id; });
+  const productos = obtenerProductos().filter(function (p) { return p.id !== id; });
   guardarProductos(productos);
   renderizarTablaProductos();
 }
@@ -77,7 +66,7 @@ function guardarProducto(e) {
   const okDesc   = validarTextoRequerido('producto-descripcion', 'descripcion', 5);
   if (!(okNombre && okCat && okPrecio && okDesc)) return;
 
-  let productos = obtenerProductos();
+  const productos = obtenerProductos();
   const id = document.getElementById('producto-id').value;
   const imagen = document.getElementById('producto-imagen').value.trim() ||
     'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80';
@@ -91,15 +80,11 @@ function guardarProducto(e) {
   };
 
   if (id === '') {
-    // Crear
-    const nuevoId = productos.length ? Math.max.apply(null, productos.map(function (p) { return p.id; })) + 1 : 1;
-    datos.id = nuevoId;
+    datos.id = productos.length ? Math.max.apply(null, productos.map(function (p) { return p.id; })) + 1 : 1;
     productos.push(datos);
   } else {
-    // Actualizar
-    const indice = productos.findIndex(function (p) { return p.id === Number(id); });
     datos.id = Number(id);
-    productos[indice] = datos;
+    productos[productos.findIndex(function (p) { return p.id === Number(id); })] = datos;
   }
 
   guardarProductos(productos);
@@ -107,9 +92,6 @@ function guardarProducto(e) {
   modalProducto.hide();
 }
 
-/* ========================================================================
-   USUARIOS
-   ======================================================================== */
 function renderizarTablaUsuarios() {
   const tbody = document.getElementById('tabla-usuarios');
   const usuarios = obtenerUsuarios();
@@ -164,8 +146,7 @@ function eliminarUsuario(id) {
     return;
   }
   if (!confirm('Seguro que deseas eliminar este usuario?')) return;
-  let usuarios = obtenerUsuarios();
-  usuarios = usuarios.filter(function (u) { return u.id !== id; });
+  const usuarios = obtenerUsuarios().filter(function (u) { return u.id !== id; });
   guardarUsuarios(usuarios);
   renderizarTablaUsuarios();
 }
@@ -179,11 +160,10 @@ function guardarUsuario(e) {
   const okRol    = validarSelect('usuario-rol', 'un rol');
   if (!(okNombre && okEmail && okPass && okRol)) return;
 
-  let usuarios = obtenerUsuarios();
+  const usuarios = obtenerUsuarios();
   const id = document.getElementById('usuario-id').value;
   const email = document.getElementById('usuario-email').value.trim();
 
-  // Verifica correo duplicado (excepto el propio registro al editar)
   const duplicado = usuarios.some(function (u) {
     return u.email.toLowerCase() === email.toLowerCase() && u.id !== Number(id);
   });
@@ -200,13 +180,11 @@ function guardarUsuario(e) {
   };
 
   if (id === '') {
-    const nuevoId = usuarios.length ? Math.max.apply(null, usuarios.map(function (u) { return u.id; })) + 1 : 1;
-    datos.id = nuevoId;
+    datos.id = usuarios.length ? Math.max.apply(null, usuarios.map(function (u) { return u.id; })) + 1 : 1;
     usuarios.push(datos);
   } else {
-    const indice = usuarios.findIndex(function (u) { return u.id === Number(id); });
     datos.id = Number(id);
-    usuarios[indice] = datos;
+    usuarios[usuarios.findIndex(function (u) { return u.id === Number(id); })] = datos;
   }
 
   guardarUsuarios(usuarios);
@@ -214,9 +192,6 @@ function guardarUsuario(e) {
   modalUsuario.hide();
 }
 
-/* ========================================================================
-   Utilidades
-   ======================================================================== */
 function limpiarErrores(campos) {
   campos.forEach(function (idCampo) {
     const campo = document.getElementById(idCampo);
@@ -226,7 +201,6 @@ function limpiarErrores(campos) {
   });
 }
 
-/* ---------- Inicio ------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
   modalProducto = new bootstrap.Modal(document.getElementById('modalProducto'));
   modalUsuario  = new bootstrap.Modal(document.getElementById('modalUsuario'));

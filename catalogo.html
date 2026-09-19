@@ -44,25 +44,21 @@
         <hr class="divisor-dorado">
         <p class="subtitulo-seccion">Servicios y productos de barberia</p>
 
-        <!-- Filtro por categoria -->
         <div class="text-center mb-4">
           <button class="btn btn-iron-outline btn-sm filtro-btn activo" data-filtro="todos">Todos</button>
           <button class="btn btn-iron-outline btn-sm filtro-btn" data-filtro="Servicio">Servicios</button>
           <button class="btn btn-iron-outline btn-sm filtro-btn" data-filtro="Producto">Productos</button>
         </div>
 
-        <!-- Aviso para invitados -->
         <div id="aviso-invitado" class="alert alerta-iron alert-warning text-center d-none" role="alert">
           Para agregar productos al carrito debes <a href="login.html" class="fw-bold">iniciar sesion</a> como cliente.
         </div>
 
-        <!-- Grilla de cards (se renderiza con JS) -->
         <div class="row g-4" id="grilla-catalogo"></div>
       </div>
     </section>
   </main>
 
-  <!-- Toast de confirmacion -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="toastCarrito" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">

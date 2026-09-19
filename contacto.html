@@ -45,7 +45,6 @@
         <p class="subtitulo-seccion">Agenda tu proxima visita a The Iron Blade</p>
 
         <div class="row g-5">
-          <!-- Formulario de reserva -->
           <div class="col-lg-6">
             <form class="form-iron ancho" id="formReserva" novalidate>
               <div id="alertaReserva" class="alert alerta-iron d-none" role="alert"></div>
@@ -96,7 +95,6 @@
             </form>
           </div>
 
-          <!-- Info + mapa embebido -->
           <div class="col-lg-6">
             <h2 class="h4">Visitanos</h2>
             <hr class="divisor-dorado" style="margin-left:0;">
@@ -105,7 +103,6 @@
             <p><i class="bi bi-clock-fill texto-dorado me-2"></i>Lunes a Sabado: 10:00 - 20:00 hrs</p>
             <p><i class="bi bi-envelope-fill texto-dorado me-2"></i>hola@ironblade.cl</p>
 
-            <!-- Mapa embebido (iframe) -->
             <div class="video-wrapper mt-4">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.7!2d-70.61!3d-33.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI1JzEyLjAiUyA3MMKwMzYnMzYuMCJX!5e0!3m2!1ses!2scl!4v1600000000000"
@@ -148,12 +145,11 @@
   <script src="js/auth.js"></script>
   <script src="js/validaciones.js"></script>
   <script>
-    // Validacion en vivo
+
     document.getElementById('nombre').addEventListener('blur', function () { validarNombre('nombre'); });
     document.getElementById('email').addEventListener('blur', function () { validarEmail('email'); });
     document.getElementById('telefono').addEventListener('blur', function () { validarTelefono('telefono'); });
 
-    // Validacion completa al enviar
     document.getElementById('formReserva').addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -170,11 +166,10 @@
       alerta.classList.add('alert-success');
       alerta.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Reserva confirmada! Te contactaremos para confirmar el horario.';
       document.getElementById('formReserva').reset();
-      // Limpia estados visuales de validacion
+
       document.querySelectorAll('.input-valido').forEach(function (el) { el.classList.remove('input-valido'); });
     });
 
-    // Fija la fecha minima del input date a hoy
     document.getElementById('fecha').min = new Date().toISOString().split('T')[0];
   </script>
 </body>

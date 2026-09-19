@@ -1,33 +1,12 @@
-/* =========================================================================
-   data.js - Capa de datos inicial (seed) en LocalStorage
-   The Iron Blade Barbershop | DSY1104
-   Carga usuarios y productos por defecto la primera vez que se abre el sitio.
-   No se usa backend ni base de datos: todo se persiste en LocalStorage.
-   ========================================================================= */
-
 const CLAVE_USUARIOS = 'ib_usuarios';
 const CLAVE_PRODUCTOS = 'ib_productos';
 const CLAVE_CARRITO = 'ib_carrito';
 
-/* ---------- Usuarios por defecto (incluye admin y usuario demo) ---------- */
 const USUARIOS_SEED = [
-  {
-    id: 1,
-    nombre: 'Administrador',
-    email: 'admin@ironblade.cl',
-    password: 'admin123',
-    rol: 'admin'
-  },
-  {
-    id: 2,
-    nombre: 'Cliente Demo',
-    email: 'usuario@ironblade.cl',
-    password: 'user123',
-    rol: 'usuario'
-  }
+  { id: 1, nombre: 'Administrador', email: 'admin@ironblade.cl', password: 'admin123', rol: 'admin' },
+  { id: 2, nombre: 'Cliente Demo', email: 'usuario@ironblade.cl', password: 'user123', rol: 'usuario' }
 ];
 
-/* ---------- Catalogo por defecto: servicios + productos ------------------ */
 const PRODUCTOS_SEED = [
   {
     id: 1,
@@ -95,7 +74,6 @@ const PRODUCTOS_SEED = [
   }
 ];
 
-/* ---------- Inicializacion: solo escribe si no existen datos ------------- */
 function inicializarDatos() {
   if (!localStorage.getItem(CLAVE_USUARIOS)) {
     localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(USUARIOS_SEED));
@@ -108,35 +86,36 @@ function inicializarDatos() {
   }
 }
 
-/* ---------- Helpers de acceso a datos ------------------------------------ */
 function obtenerUsuarios() {
   return JSON.parse(localStorage.getItem(CLAVE_USUARIOS)) || [];
 }
+
 function guardarUsuarios(usuarios) {
   localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuarios));
 }
+
 function obtenerProductos() {
   return JSON.parse(localStorage.getItem(CLAVE_PRODUCTOS)) || [];
 }
+
 function guardarProductos(productos) {
   localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productos));
 }
+
 function obtenerCarrito() {
   return JSON.parse(localStorage.getItem(CLAVE_CARRITO)) || [];
 }
+
 function guardarCarrito(carrito) {
   localStorage.setItem(CLAVE_CARRITO, JSON.stringify(carrito));
 }
 
-/* Formatea numeros como precio chileno (CLP) */
 function formatearPrecio(valor) {
   return '$' + valor.toLocaleString('es-CL');
 }
 
-// Ejecutar la inicializacion en cuanto se carga el script
 inicializarDatos();
 
-/* ---------- Exportacion para pruebas en Node (no afecta al navegador) ---- */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     CLAVE_USUARIOS, CLAVE_PRODUCTOS, CLAVE_CARRITO,

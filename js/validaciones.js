@@ -1,13 +1,3 @@
-/* =========================================================================
-   validaciones.js - Validaciones de formularios en JavaScript
-   The Iron Blade Barbershop | DSY1104 - Indicador IE1.2.1
-   Validaciones controladas por JS con sugerencias y mensajes de error
-   personalizados, mostrados en el contexto de cada campo.
-   ========================================================================= */
-
-/* ---------- Utilidades para mostrar/limpiar mensajes --------------------- */
-/* Cada campo tiene un <span class="mensaje-error" id="error-<campo>"> */
-
 function mostrarError(idCampo, mensaje) {
   const campo = document.getElementById(idCampo);
   const spanError = document.getElementById('error-' + idCampo);
@@ -32,8 +22,6 @@ function marcarValido(idCampo) {
   }
 }
 
-/* ---------- Validadores individuales (retornan true/false) --------------- */
-
 function validarNombre(idCampo) {
   const valor = document.getElementById(idCampo).value.trim();
   if (valor === '') {
@@ -44,9 +32,7 @@ function validarNombre(idCampo) {
     mostrarError(idCampo, 'El nombre debe tener al menos 3 caracteres.');
     return false;
   }
-  // Solo letras y espacios (incluye tildes y n)
-  const patron = /^[a-zA-ZaeiouAEIOUnNuU\s]+$/;
-  if (!patron.test(valor)) {
+  if (!/^[a-zA-ZaeiouAEIOUnNuU\s]+$/.test(valor)) {
     mostrarError(idCampo, 'El nombre solo puede contener letras y espacios.');
     return false;
   }
@@ -60,9 +46,7 @@ function validarEmail(idCampo) {
     mostrarError(idCampo, 'El correo es obligatorio. Ej: nombre@correo.cl');
     return false;
   }
-  // Patron de email estandar
-  const patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!patron.test(valor)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
     mostrarError(idCampo, 'Formato de correo invalido. Sugerencia: nombre@correo.cl');
     return false;
   }
@@ -80,10 +64,7 @@ function validarPassword(idCampo) {
     mostrarError(idCampo, 'La contrasena debe tener al menos 6 caracteres.');
     return false;
   }
-  // Debe tener al menos una letra y un numero
-  const tieneLetra = /[a-zA-Z]/.test(valor);
-  const tieneNumero = /[0-9]/.test(valor);
-  if (!tieneLetra || !tieneNumero) {
+  if (!/[a-zA-Z]/.test(valor) || !/[0-9]/.test(valor)) {
     mostrarError(idCampo, 'La contrasena debe combinar letras y numeros. Ej: barber123');
     return false;
   }
@@ -112,9 +93,7 @@ function validarTelefono(idCampo) {
     mostrarError(idCampo, 'El telefono es obligatorio. Ej: +56912345678');
     return false;
   }
-  // Acepta +569XXXXXXXX o 9 digitos
-  const patron = /^(\+?56)?\s?9\s?\d{4}\s?\d{4}$/;
-  if (!patron.test(valor)) {
+  if (!/^(\+?56)?\s?9\s?\d{4}\s?\d{4}$/.test(valor)) {
     mostrarError(idCampo, 'Telefono invalido. Sugerencia: +56912345678 o 912345678');
     return false;
   }
@@ -178,7 +157,6 @@ function validarFechaFutura(idCampo) {
   return true;
 }
 
-/* ---------- Exportacion para pruebas en Node (no afecta al navegador) ---- */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     mostrarError, marcarValido,

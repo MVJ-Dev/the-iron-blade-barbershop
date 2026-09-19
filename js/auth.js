@@ -1,14 +1,5 @@
-/* =========================================================================
-   auth.js - Autenticacion, sesion y control de roles
-   The Iron Blade Barbershop | DSY1104
-   La sesion activa se guarda en SessionStorage (dura mientras la pestana
-   este abierta). Los usuarios registrados viven en LocalStorage (data.js).
-   ========================================================================= */
-
 const CLAVE_SESION = 'ib_sesion';
 
-/* ---------- Iniciar sesion ------------------------------------------------ */
-/* Devuelve un objeto {ok, mensaje, usuario} */
 function iniciarSesion(email, password) {
   const usuarios = obtenerUsuarios();
   const encontrado = usuarios.find(
@@ -29,35 +20,21 @@ function iniciarSesion(email, password) {
   return { ok: true, mensaje: 'Sesion iniciada.', usuario: sesion };
 }
 
-/* ---------- Registrar nuevo usuario (rol usuario por defecto) ------------ */
 function registrarUsuario(nombre, email, password) {
   const usuarios = obtenerUsuarios();
 
-  const yaExiste = usuarios.some(
-    (u) => u.email.toLowerCase() === email.toLowerCase()
-  );
-  if (yaExiste) {
+  if (usuarios.some((u) => u.email.toLowerCase() === email.toLowerCase())) {
     return { ok: false, mensaje: 'Ya existe una cuenta con ese correo.' };
   }
 
-  const nuevoId = usuarios.length
-    ? Math.max(...usuarios.map((u) => u.id)) + 1
-    : 1;
-
-  const nuevo = {
-    id: nuevoId,
-    nombre: nombre,
-    email: email,
-    password: password,
-    rol: 'usuario'
-  };
+  const nuevoId = usuarios.length ? Math.max(...usuarios.map((u) => u.id)) + 1 : 1;
+  const nuevo = { id: nuevoId, nombre, email, password, rol: 'usuario' };
 
   usuarios.push(nuevo);
   guardarUsuarios(usuarios);
   return { ok: true, mensaje: 'Cuenta creada correctamente.', usuario: nuevo };
 }
 
-/* ---------- Consultar sesion actual -------------------------------------- */
 function obtenerSesion() {
   return JSON.parse(sessionStorage.getItem(CLAVE_SESION)) || null;
 }
@@ -71,15 +48,11 @@ function esAdmin() {
   return sesion !== null && sesion.rol === 'admin';
 }
 
-/* ---------- Cerrar sesion ------------------------------------------------- */
 function cerrarSesion() {
   sessionStorage.removeItem(CLAVE_SESION);
   window.location.href = 'index.html';
 }
 
-/* ---------- Proteger paginas segun rol ----------------------------------- */
-/* Llamar al inicio de una pagina restringida.
-   rolRequerido: 'usuario' | 'admin' | null (solo requiere sesion) */
 function protegerPagina(rolRequerido) {
   const sesion = obtenerSesion();
 
@@ -98,9 +71,6 @@ function protegerPagina(rolRequerido) {
   return true;
 }
 
-/* ---------- Actualizar la navbar segun la sesion ------------------------- */
-/* Muestra/oculta enlaces (Admin, Carrito, Login, Cerrar sesion) y el nombre
-   del usuario. Se apoya en elementos con ids convencionales en cada HTML. */
 function actualizarNavbar() {
   const sesion = obtenerSesion();
 
@@ -118,13 +88,11 @@ function actualizarNavbar() {
     if (nombreUsuario) {
       nombreUsuario.textContent = sesion.nombre + ' (' + sesion.rol + ')';
     }
-    // El mantenedor solo lo ve el admin
     if (navAdmin) {
       sesion.rol === 'admin'
         ? navAdmin.classList.remove('d-none')
         : navAdmin.classList.add('d-none');
     }
-    // El carrito es para clientes (usuario). El admin no compra.
     if (navCarrito) {
       sesion.rol === 'usuario'
         ? navCarrito.classList.remove('d-none')
@@ -139,7 +107,6 @@ function actualizarNavbar() {
   }
 }
 
-/* Enlaza el boton de cerrar sesion si existe en la pagina */
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', function () {
     actualizarNavbar();
@@ -153,7 +120,6 @@ if (typeof document !== 'undefined') {
   });
 }
 
-/* ---------- Exportacion para pruebas en Node (no afecta al navegador) ---- */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     CLAVE_SESION,

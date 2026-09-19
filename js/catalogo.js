@@ -1,11 +1,5 @@
-/* =========================================================================
-   catalogo.js - Render del catalogo y agregar al carrito
-   The Iron Blade Barbershop | DSY1104
-   ========================================================================= */
-
 let filtroActual = 'todos';
 
-/* ---------- Renderiza las cards del catalogo ----------------------------- */
 function renderizarCatalogo() {
   const grilla = document.getElementById('grilla-catalogo');
   const productos = obtenerProductos();
@@ -41,7 +35,6 @@ function renderizarCatalogo() {
     grilla.appendChild(col);
   });
 
-  // Enlaza los botones "Agregar"
   document.querySelectorAll('.btn-agregar').forEach(function (btn) {
     btn.addEventListener('click', function () {
       agregarAlCarrito(Number(this.getAttribute('data-id')));
@@ -49,22 +42,19 @@ function renderizarCatalogo() {
   });
 }
 
-/* ---------- Agregar un producto al carrito ------------------------------- */
 function agregarAlCarrito(idProducto) {
   const sesion = obtenerSesion();
 
-  // Solo clientes con sesion pueden comprar
   if (!sesion || sesion.rol !== 'usuario') {
     document.getElementById('aviso-invitado').classList.remove('d-none');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
   }
 
-  const productos = obtenerProductos();
-  const producto = productos.find(function (p) { return p.id === idProducto; });
+  const producto = obtenerProductos().find(function (p) { return p.id === idProducto; });
   if (!producto) return;
 
-  let carrito = obtenerCarrito();
+  const carrito = obtenerCarrito();
   const existente = carrito.find(function (item) { return item.id === idProducto; });
 
   if (existente) {
@@ -83,22 +73,17 @@ function agregarAlCarrito(idProducto) {
   guardarCarrito(carrito);
   actualizarContador();
 
-  // Muestra el toast de confirmacion
   document.getElementById('toast-texto').textContent = producto.nombre + ' agregado al carrito.';
-  const toast = new bootstrap.Toast(document.getElementById('toastCarrito'));
-  toast.show();
+  new bootstrap.Toast(document.getElementById('toastCarrito')).show();
 }
 
-/* ---------- Actualiza el contador del carrito en la navbar --------------- */
 function actualizarContador() {
   const contador = document.getElementById('contador-carrito');
   if (!contador) return;
   const carrito = obtenerCarrito();
-  const total = carrito.reduce(function (suma, item) { return suma + item.cantidad; }, 0);
-  contador.textContent = total;
+  contador.textContent = carrito.reduce(function (suma, item) { return suma + item.cantidad; }, 0);
 }
 
-/* ---------- Filtros por categoria ---------------------------------------- */
 function configurarFiltros() {
   document.querySelectorAll('.filtro-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -110,7 +95,6 @@ function configurarFiltros() {
   });
 }
 
-/* ---------- Inicio ------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
   renderizarCatalogo();
   configurarFiltros();

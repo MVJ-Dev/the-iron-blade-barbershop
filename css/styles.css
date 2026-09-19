@@ -1,12 +1,4 @@
-/* =========================================================================
-   THE IRON BLADE BARBERSHOP - Hoja de estilos externa personalizada
-   Asignatura: DSY1104 - Desarrollo Fullstack II
-   Autores: Nelson Carrasco - Mathias Von Jentschyk
-   Descripcion: CSS personalizado (variables, tipografias, componentes propios)
-                aplicado de forma consistente y externa a todas las paginas.
-   ========================================================================= */
-
-/* ---------- 1. Variables de diseno (paleta barberia dark + dorado) ------- */
+/* Variables de diseno (paleta barberia dark + dorado) */
 :root {
   --color-negro:        #0d0d0d;
   --color-carbon:       #1a1a1a;
@@ -27,7 +19,7 @@
   --transicion: all 0.25s ease-in-out;
 }
 
-/* ---------- 2. Reset y base ---------------------------------------------- */
+/* Reset y base */
 * {
   box-sizing: border-box;
 }
@@ -69,7 +61,7 @@ a:hover {
 
 .texto-dorado { color: var(--color-dorado) !important; }
 
-/* ---------- 3. Navbar personalizada -------------------------------------- */
+/* Navbar personalizada */
 .navbar-iron {
   background-color: var(--color-negro) !important;
   border-bottom: 2px solid var(--color-dorado);
@@ -113,7 +105,7 @@ a:hover {
   background: var(--color-dorado);
 }
 
-/* ---------- 4. Botones personalizados ------------------------------------ */
+/* Botones personalizados */
 .btn-iron {
   background: linear-gradient(135deg, var(--color-dorado), var(--color-cobre));
   color: var(--color-negro);
@@ -151,7 +143,7 @@ a:hover {
   color: var(--color-negro);
 }
 
-/* ---------- 5. Hero ------------------------------------------------------- */
+/* Hero */
 .hero {
   position: relative;
   min-height: 90vh;
@@ -194,7 +186,7 @@ a:hover {
   font-size: 0.95rem;
 }
 
-/* ---------- 6. Secciones -------------------------------------------------- */
+/* Secciones */
 .seccion {
   padding: 5rem 0;
 }
@@ -214,7 +206,7 @@ a:hover {
   margin-bottom: 2.5rem;
 }
 
-/* ---------- 7. Cards personalizadas -------------------------------------- */
+/* Cards personalizadas */
 .card-iron {
   background-color: var(--color-carbon-claro);
   border: 1px solid #333;
@@ -270,7 +262,7 @@ a:hover {
   border-radius: 2px;
 }
 
-/* ---------- 8. Servicios (iconos) ---------------------------------------- */
+/* Servicios (iconos) */
 .servicio-item {
   text-align: center;
   padding: 2rem 1rem;
@@ -292,7 +284,7 @@ a:hover {
   margin-bottom: 1rem;
 }
 
-/* ---------- 9. Video ------------------------------------------------------ */
+/* Video */
 .video-wrapper {
   position: relative;
   max-width: 900px;
@@ -309,7 +301,7 @@ a:hover {
   display: block;
 }
 
-/* ---------- 10. Formularios ---------------------------------------------- */
+/* Formularios */
 .form-iron {
   background-color: var(--color-carbon-claro);
   border: 1px solid #333;
@@ -385,7 +377,7 @@ a:hover {
   font-family: var(--fuente-texto);
 }
 
-/* ---------- 11. Tablas (mantenedor admin) -------------------------------- */
+/* Tablas (mantenedor admin) */
 .tabla-iron {
   color: var(--color-crema);
   background-color: var(--color-carbon-claro);
@@ -404,7 +396,7 @@ a:hover {
   border-color: #333;
 }
 
-/* ---------- 12. Carrito --------------------------------------------------- */
+/* Carrito */
 .item-carrito {
   display: flex;
   align-items: center;
@@ -445,7 +437,7 @@ a:hover {
   left: -4px;
 }
 
-/* ---------- 13. Badge de rol / sesion ------------------------------------ */
+/* Badge de rol / sesion */
 .badge-rol {
   font-family: var(--fuente-titulo);
   letter-spacing: 1px;
@@ -457,7 +449,7 @@ a:hover {
   color: var(--color-negro);
 }
 
-/* ---------- 14. Footer ---------------------------------------------------- */
+/* Footer */
 .footer-iron {
   background-color: var(--color-negro);
   border-top: 2px solid var(--color-dorado);
@@ -500,7 +492,7 @@ a:hover {
   color: #666;
 }
 
-/* ---------- 15. Carrusel -------------------------------------------------- */
+/* Carrusel */
 .carousel-item img {
   height: 480px;
   object-fit: cover;
@@ -519,7 +511,7 @@ a:hover {
   letter-spacing: 2px;
 }
 
-/* ---------- 16. Utilidades y responsive ---------------------------------- */
+/* Utilidades y responsive */
 .mt-seccion { margin-top: 4rem; }
 
 @media (max-width: 768px) {
