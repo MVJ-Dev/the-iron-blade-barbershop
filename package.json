@@ -1,0 +1,9 @@
+{
+  "name": "the-iron-blade-barbershop",
+  "version": "1.0.0",
+  "description": "Pruebas de la logica del sitio The Iron Blade Barbershop (sin dependencias externas, usa node:test).",
+  "scripts": {
+    "test": "node --test tests/"
+  },
+  "license": "MIT"
+}

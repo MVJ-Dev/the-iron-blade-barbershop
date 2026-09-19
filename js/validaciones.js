@@ -177,3 +177,13 @@ function validarFechaFutura(idCampo) {
   marcarValido(idCampo);
   return true;
 }
+
+/* ---------- Exportacion para pruebas en Node (no afecta al navegador) ---- */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    mostrarError, marcarValido,
+    validarNombre, validarEmail, validarPassword, validarConfirmacion,
+    validarTelefono, validarTextoRequerido, validarSelect,
+    validarNumeroPositivo, validarFechaFutura
+  };
+}

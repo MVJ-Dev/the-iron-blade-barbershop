@@ -135,3 +135,16 @@ function formatearPrecio(valor) {
 
 // Ejecutar la inicializacion en cuanto se carga el script
 inicializarDatos();
+
+/* ---------- Exportacion para pruebas en Node (no afecta al navegador) ---- */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    CLAVE_USUARIOS, CLAVE_PRODUCTOS, CLAVE_CARRITO,
+    USUARIOS_SEED, PRODUCTOS_SEED,
+    inicializarDatos,
+    obtenerUsuarios, guardarUsuarios,
+    obtenerProductos, guardarProductos,
+    obtenerCarrito, guardarCarrito,
+    formatearPrecio
+  };
+}

@@ -140,13 +140,24 @@ function actualizarNavbar() {
 }
 
 /* Enlaza el boton de cerrar sesion si existe en la pagina */
-document.addEventListener('DOMContentLoaded', function () {
-  actualizarNavbar();
-  const btnCerrar = document.getElementById('nav-cerrar');
-  if (btnCerrar) {
-    btnCerrar.addEventListener('click', function (e) {
-      e.preventDefault();
-      cerrarSesion();
-    });
-  }
-});
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function () {
+    actualizarNavbar();
+    const btnCerrar = document.getElementById('nav-cerrar');
+    if (btnCerrar) {
+      btnCerrar.addEventListener('click', function (e) {
+        e.preventDefault();
+        cerrarSesion();
+      });
+    }
+  });
+}
+
+/* ---------- Exportacion para pruebas en Node (no afecta al navegador) ---- */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    CLAVE_SESION,
+    iniciarSesion, registrarUsuario,
+    obtenerSesion, haySesion, esAdmin, cerrarSesion
+  };
+}
