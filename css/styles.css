@@ -301,6 +301,8 @@ a:hover {
   display: block;
 }
 
+.mapa-embed { border: 0; }
+
 /* Formularios */
 .form-iron {
   background-color: var(--color-carbon-claro);
@@ -513,6 +515,38 @@ a:hover {
 
 /* Utilidades y responsive */
 .mt-seccion { margin-top: 4rem; }
+
+/* Compensacion del navbar fijo en paginas internas */
+.seccion-con-navbar { margin-top: 56px; }
+
+/* Alturas minimas de paginas internas */
+.pagina-alta   { min-height: 85vh; }
+.pagina-media  { min-height: 80vh; }
+.pagina-larga  { min-height: 90vh; }
+
+/* Divisor alineado a la izquierda (no centrado) */
+.divisor-izquierda { margin-left: 0; }
+
+/* Icono grande de carrito vacio */
+.icono-vacio {
+  font-size: 3rem;
+  color: var(--color-dorado);
+}
+
+/* Separadores internos oscuros (resumen carrito, modales admin) */
+.hr-oscuro { border-color: #444; }
+
+/* Modal con estetica Iron Blade */
+.modal-iron {
+  background-color: var(--color-carbon-claro);
+  color: var(--color-crema);
+  border: 1px solid var(--color-dorado);
+}
+
+.modal-iron .modal-header,
+.modal-iron .modal-footer {
+  border-color: #444;
+}
 
 @media (max-width: 768px) {
   .seccion { padding: 3rem 0; }
