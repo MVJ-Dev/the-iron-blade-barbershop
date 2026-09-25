@@ -13,7 +13,7 @@ npm test
 o directamente:
 
 ```bash
-node --test tests/
+node --test tests/*.test.js
 ```
 
 ## Qué se prueba (20 pruebas)
