@@ -301,6 +301,11 @@ a:hover {
   display: block;
 }
 
+.video-wrapper iframe {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
 .mapa-embed { border: 0; }
 
 /* Formularios */
