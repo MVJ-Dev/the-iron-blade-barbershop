@@ -267,8 +267,10 @@ test('paginas HTML: todas existen y tienen scripts + IDs esperados', () => {
   }
 });
 
-test('paginas HTML: index usa etiquetas semanticas y video', () => {
+test('paginas HTML: index usa etiquetas semanticas y video embebido', () => {
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-  ['<header', '<nav', '<main', '<section', '<article', '<footer', '<video']
+  ['<header', '<nav', '<main', '<section', '<article', '<footer']
     .forEach(tag => assert.ok(html.includes(tag), 'index.html debe incluir ' + tag));
+  assert.ok(/<iframe[^>]+youtube\.com\/embed/i.test(html),
+    'index.html debe incluir un video embebido (iframe de YouTube)');
 });

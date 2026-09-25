@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const carrito = obtenerCarrito();
     if (carrito.length === 0) return;
     const total = carrito.reduce(function (s, i) { return s + i.precio * i.cantidad; }, 0);
-    alert('Compra realizada con exito!\nTotal pagado: ' + formatearPrecio(total) + '\nGracias por preferir The Iron Blade.');
+    alert('¡Compra realizada con éxito!\nTotal pagado: ' + formatearPrecio(total) + '\nGracias por preferir The Iron Blade.');
     guardarCarrito([]);
     renderizarCarrito();
   });

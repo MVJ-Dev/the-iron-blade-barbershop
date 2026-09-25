@@ -10,10 +10,10 @@ const USUARIOS_SEED = [
 const PRODUCTOS_SEED = [
   {
     id: 1,
-    nombre: 'Corte Clasico',
+    nombre: 'Corte Clásico',
     categoria: 'Servicio',
     precio: 9000,
-    descripcion: 'Corte tradicional a tijera y maquina, terminacion prolija.',
+    descripcion: 'Corte tradicional a tijera y máquina, terminación prolija.',
     imagen: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=600&q=80'
   },
   {
@@ -21,7 +21,7 @@ const PRODUCTOS_SEED = [
     nombre: 'Fade Moderno',
     categoria: 'Servicio',
     precio: 11000,
-    descripcion: 'Degradado a maquina con difuminado perfecto y estilo actual.',
+    descripcion: 'Degradado a máquina con difuminado perfecto y estilo actual.',
     imagen: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80'
   },
   {
@@ -37,15 +37,15 @@ const PRODUCTOS_SEED = [
     nombre: 'Afeitado a Navaja',
     categoria: 'Servicio',
     precio: 8000,
-    descripcion: 'Afeitado clasico con toalla caliente y navaja tradicional.',
+    descripcion: 'Afeitado clásico con toalla caliente y navaja tradicional.',
     imagen: 'https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 5,
-    nombre: 'Pomada Clasica',
+    nombre: 'Pomada Clásica',
     categoria: 'Producto',
     precio: 7990,
-    descripcion: 'Pomada de fijacion fuerte y acabado brillante, 100 gr.',
+    descripcion: 'Pomada de fijación fuerte y acabado brillante, 100 gr.',
     imagen: 'https://images.unsplash.com/photo-1631730486572-226d1f595b68?auto=format&fit=crop&w=600&q=80'
   },
   {
@@ -58,10 +58,10 @@ const PRODUCTOS_SEED = [
   },
   {
     id: 7,
-    nombre: 'Shampoo Solido',
+    nombre: 'Shampoo Sólido',
     categoria: 'Producto',
     precio: 5990,
-    descripcion: 'Shampoo natural para cabello y barba, larga duracion.',
+    descripcion: 'Shampoo natural para cabello y barba, larga duración.',
     imagen: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80'
   },
   {
@@ -69,7 +69,7 @@ const PRODUCTOS_SEED = [
     nombre: 'Kit de Afeitado',
     categoria: 'Producto',
     precio: 24990,
-    descripcion: 'Set completo: navaja, brocha, jabon y soporte de acero.',
+    descripcion: 'Set completo: navaja, brocha, jabón y soporte de acero.',
     imagen: 'https://images.unsplash.com/photo-1589710751893-f9a6770ad71b?auto=format&fit=crop&w=600&q=80'
   }
 ];

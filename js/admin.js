@@ -142,7 +142,7 @@ function editarUsuario(id) {
 function eliminarUsuario(id) {
   const sesion = obtenerSesion();
   if (sesion && sesion.id === id) {
-    alert('No puedes eliminar el usuario con el que tienes la sesion iniciada.');
+    alert('No puedes eliminar el usuario con el que tienes la sesión iniciada.');
     return;
   }
   if (!confirm('Seguro que deseas eliminar este usuario?')) return;

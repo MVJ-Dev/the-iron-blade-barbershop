@@ -17,7 +17,7 @@ function iniciarSesion(email, password) {
     rol: encontrado.rol
   };
   sessionStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
-  return { ok: true, mensaje: 'Sesion iniciada.', usuario: sesion };
+  return { ok: true, mensaje: 'Sesión iniciada.', usuario: sesion };
 }
 
 function registrarUsuario(nombre, email, password) {
@@ -57,7 +57,7 @@ function protegerPagina(rolRequerido) {
   const sesion = obtenerSesion();
 
   if (!sesion) {
-    alert('Debes iniciar sesion para acceder a esta seccion.');
+    alert('Debes iniciar sesión para acceder a esta sección.');
     window.location.href = 'login.html';
     return false;
   }
