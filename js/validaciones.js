@@ -32,7 +32,7 @@ function validarNombre(idCampo) {
     mostrarError(idCampo, 'El nombre debe tener al menos 3 caracteres.');
     return false;
   }
-  if (!/^[a-zA-ZaeiouAEIOUnNuU\s]+$/.test(valor)) {
+  if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(valor)) {
     mostrarError(idCampo, 'El nombre solo puede contener letras y espacios.');
     return false;
   }
@@ -146,7 +146,8 @@ function validarFechaFutura(idCampo) {
     mostrarError(idCampo, 'Debes seleccionar una fecha para tu reserva.');
     return false;
   }
-  const fechaSeleccionada = new Date(valor);
+  const partes = valor.split('-');
+  const fechaSeleccionada = new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
   if (fechaSeleccionada < hoy) {
