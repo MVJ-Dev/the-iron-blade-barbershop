@@ -7,7 +7,7 @@ function iniciarSesion(email, password) {
   );
 
   if (!encontrado) {
-    return { ok: false, mensaje: 'Correo o contrasena incorrectos.' };
+    return { ok: false, mensaje: 'Correo o contraseña incorrectos.' };
   }
 
   const sesion = {

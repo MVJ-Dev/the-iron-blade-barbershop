@@ -47,7 +47,7 @@ function validarEmail(idCampo) {
     return false;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
-    mostrarError(idCampo, 'Formato de correo invalido. Sugerencia: nombre@correo.cl');
+    mostrarError(idCampo, 'Formato de correo inválido. Sugerencia: nombre@correo.cl');
     return false;
   }
   marcarValido(idCampo);
@@ -57,15 +57,15 @@ function validarEmail(idCampo) {
 function validarPassword(idCampo) {
   const valor = document.getElementById(idCampo).value;
   if (valor === '') {
-    mostrarError(idCampo, 'La contrasena es obligatoria.');
+    mostrarError(idCampo, 'La contraseña es obligatoria.');
     return false;
   }
   if (valor.length < 6) {
-    mostrarError(idCampo, 'La contrasena debe tener al menos 6 caracteres.');
+    mostrarError(idCampo, 'La contraseña debe tener al menos 6 caracteres.');
     return false;
   }
   if (!/[a-zA-Z]/.test(valor) || !/[0-9]/.test(valor)) {
-    mostrarError(idCampo, 'La contrasena debe combinar letras y numeros. Ej: barber123');
+    mostrarError(idCampo, 'La contraseña debe combinar letras y números. Ej: barber123');
     return false;
   }
   marcarValido(idCampo);
@@ -76,11 +76,11 @@ function validarConfirmacion(idPassword, idConfirmacion) {
   const pass = document.getElementById(idPassword).value;
   const conf = document.getElementById(idConfirmacion).value;
   if (conf === '') {
-    mostrarError(idConfirmacion, 'Debes repetir la contrasena.');
+    mostrarError(idConfirmacion, 'Debes repetir la contraseña.');
     return false;
   }
   if (pass !== conf) {
-    mostrarError(idConfirmacion, 'Las contrasenas no coinciden.');
+    mostrarError(idConfirmacion, 'Las contraseñas no coinciden.');
     return false;
   }
   marcarValido(idConfirmacion);
@@ -90,11 +90,11 @@ function validarConfirmacion(idPassword, idConfirmacion) {
 function validarTelefono(idCampo) {
   const valor = document.getElementById(idCampo).value.trim();
   if (valor === '') {
-    mostrarError(idCampo, 'El telefono es obligatorio. Ej: +56912345678');
+    mostrarError(idCampo, 'El teléfono es obligatorio. Ej: +56912345678');
     return false;
   }
   if (!/^(\+?56)?\s?9\s?\d{4}\s?\d{4}$/.test(valor)) {
-    mostrarError(idCampo, 'Telefono invalido. Sugerencia: +56912345678 o 912345678');
+    mostrarError(idCampo, 'Teléfono inválido. Sugerencia: +56912345678 o 912345678');
     return false;
   }
   marcarValido(idCampo);
@@ -133,7 +133,7 @@ function validarNumeroPositivo(idCampo, nombreCampo) {
   }
   const numero = Number(valor);
   if (isNaN(numero) || numero <= 0) {
-    mostrarError(idCampo, nombreCampo + ' debe ser un numero mayor a 0.');
+    mostrarError(idCampo, nombreCampo + ' debe ser un número mayor a 0.');
     return false;
   }
   marcarValido(idCampo);
