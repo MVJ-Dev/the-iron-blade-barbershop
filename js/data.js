@@ -46,7 +46,7 @@ const PRODUCTOS_SEED = [
     categoria: 'Producto',
     precio: 7990,
     descripcion: 'Pomada de fijacion fuerte y acabado brillante, 100 gr.',
-    imagen: 'https://images.unsplash.com/photo-1626015449577-4a3f70f37c96?auto=format&fit=crop&w=600&q=80'
+    imagen: 'https://images.unsplash.com/photo-1631730486572-226d1f595b68?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const PRODUCTOS_SEED = [
     categoria: 'Producto',
     precio: 24990,
     descripcion: 'Set completo: navaja, brocha, jabon y soporte de acero.',
-    imagen: 'https://images.unsplash.com/photo-1521490878406-4d5c3b2c2a3a?auto=format&fit=crop&w=600&q=80'
+    imagen: 'https://images.unsplash.com/photo-1589710751893-f9a6770ad71b?auto=format&fit=crop&w=600&q=80'
   }
 ];
 
